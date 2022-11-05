@@ -25,12 +25,12 @@ void setup()
   mfrc522.PCD_Init();
 }
 
-const bool& readAS()
+bool readAS()
 {
   return digitalRead(AS_pin);
 }
 
-const uint16_t& readMQ()
+uint16_t readMQ()
 {
   return analogRead(MQ_pin);
 }
@@ -73,10 +73,10 @@ void readRC522(uint8_t id[]) {
 
 bool checkFakeCard(uint8_t valid_card[][4])
 {
-  uint8_t id[4], count = 0;
+  uint8_t id[] = { 0, 0, 0, 0 }, count = 0;
   readRC522(id);
 
-  for (uint8_t row = 0; row < row; row++)
+  for (uint8_t row = 0; row < sizeof(valid_card); row++)
   {
     for (uint8_t i = 0; i < 4; i++)
     {
@@ -88,11 +88,19 @@ bool checkFakeCard(uint8_t valid_card[][4])
       control::controlBuzzer(1);
       delay(200);
       control::controlBuzzer(0);
-
+      delay(1000);
       return true;
     }
     else count = 0;
   }
+
+  //  control::controlBuzzer(1);
+  //  delay(100);
+  //  control::controlBuzzer(0);
+  //  delay(200);
+  //  control::controlBuzzer(1);
+  //  delay(100);
+  //  control::controlBuzzer(0);
 
   return false;
 }

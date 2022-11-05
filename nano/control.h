@@ -21,10 +21,10 @@ void controlMotor(const uint8_t& value)
       analogWrite(MOTOR_pin, 0);
       break;
     case 1:
-      analogWrite(MOTOR_pin, 50);
+      analogWrite(MOTOR_pin, 70);
       break;
     case 2:
-      analogWrite(MOTOR_pin, 150);
+      analogWrite(MOTOR_pin, 100);
       break;
     case 3:
       analogWrite(MOTOR_pin, 255);
