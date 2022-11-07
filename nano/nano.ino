@@ -10,16 +10,13 @@ void setup() {
 }
 
 void loop() {
-  //uart::readUART();
   uart::writeUART();
 
   if (rfid_sensor::readBT(1) || rfid_sensor::checkFakeCard(valid_id)) // cua
   {
     cua = !cua;
-    //    if (cua) control::controlServo(DOOROPEN);
-    //    else control::controlServo(DOORCLOSE);
-    if (cua) Serial.println("door open");
-    else Serial.println("door close");
+    if (cua) control::controlServo(DOOROPEN);
+    else control::controlServo(DOORCLOSE);
   }
   if (rfid_sensor::readBT(2)) // led ss
   {

@@ -1,14 +1,21 @@
+#include <ESP8266WiFiMulti.h>
 #include "data.h"
-#include "control.h"
-#include "uart.h"
 #include "firebase.h"
+#include "uart.h"
+#include "control.h"
+
+ESP8266WiFiMulti wifiMulti;
 
 void setup() {
-  // put your setup code here, to run once:
+  for (uint8_t i = 0; i < sizeof(ssid); i++) wifiMulti.addAP(ssid[i].c_str(), password[i].c_str());
+  while (wifiMulti.run() != WL_CONNECTED) delay(500);
 
+  uart::setup();
+  control::setup();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  uart::readUART();
+  control::controlLcd();
+  control::controlLed();
 }
