@@ -13,4 +13,4 @@ if (data != old_data):
 	data = data.split('-')
 	for i in range(len(path)): pass
 # 		firebase.put("/", path[i], data[i + 1])
-	st.experimental_rerun()
+st.experimental_rerun()
