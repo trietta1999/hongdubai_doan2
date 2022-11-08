@@ -9,5 +9,5 @@ path = ["BED_ROOM/nhiet_do", "BED_ROOM/do_am", "BED_ROOM/khi_ga", "BED_ROOM/cb_a
 for i in range(len(path)):
 	firebase.put("/", path[i], data[i + 1])
 
-time.sleep(0.5)
+time.sleep(5000)
 st.experimental_rerun()
